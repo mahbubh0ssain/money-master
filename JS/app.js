@@ -35,11 +35,15 @@ displayAmount = (displayId, value) => {
 document.getElementById("save").addEventListener("click", function () {
   const income = getValueOfInputField("income");
   const percentage = getValueOfInputField("percentage");
+  if (percentage > 100) {
+    alert("You can't save more than 100%");
+    return;
+  }
   const savedAmount = (income / 100) * percentage;
 
   const balance = document.getElementById("balance").innerText;
   const remainingBalance = parseFloat(balance) - savedAmount;
-  
+
   if (Number.isNaN(remainingBalance)) {
     return;
   }
